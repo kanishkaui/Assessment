@@ -1,0 +1,39 @@
+.spaceX {
+    padding-left: 10px;
+}
+
+.box {
+    border: 2px solid black;
+    padding: 20px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.spaceY {
+    width: 100%;
+    padding: 5px;
+}
+
+.json-style {
+    padding: 20px;
+    background-color: white;
+}
+
+.strong {
+    font-weight: bold;
+    font-size: large;
+}
+
+.header-color {
+    background-color: #d2d2d2;
+    padding: 10px;
+    width: 100%;
+}
+
+.answerX {
+    font-weight: bold;
+    font-size: large;
+    color: blue;
+    text-decoration: underline;
+    border-bottom: 1px solid violet;
+}

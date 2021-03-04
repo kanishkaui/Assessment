@@ -1,0 +1,35 @@
+<form class="box ">
+    <p class="strong">Resource Type: {{ formData.resourceType }} - Result</p>
+
+    <p class="strong">Date: {{ dateFl }}</p>
+    <p class="strong">Status: {{ formData.status }}</p>
+
+    <ng-container style="width: 100%" *ngFor="let controls of this.formData.item">
+        <div class="header-color" *ngIf="controls.type == 'group'">
+            {{ controls.text }}
+        </div>
+        <br />
+
+        <ng-container *ngIf="controls.type == 'group'">
+            <ng-container style="width: 100%" *ngFor="let childControl of controls.item">
+                <span> {{ childControl.text }} </span>
+                <span class="answerX"> {{ childControl.answer }} </span>
+                <br />
+                <br />
+            </ng-container>
+        </ng-container>
+
+        <span *ngIf="controls.type != 'group'"> {{ controls.text }} </span>
+
+        <ng-container *ngIf="controls.type !== 'group'">
+            <ng-container class="spaceX">
+                <span class="answerX"> {{ controls.answer }} </span>
+            </ng-container>
+
+            <br />
+            <br />
+        </ng-container>
+    </ng-container>
+</form>
+
+<hr />

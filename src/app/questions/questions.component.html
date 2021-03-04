@@ -1,0 +1,83 @@
+<form [formGroup]="dynamicForm" class="box">
+    <p class="strong">Resource Type: {{ questionnaire.resourceType }}</p>
+
+    <p class="strong">Date: {{ qDate }}</p>
+    <p class="strong">Status: {{ questionnaire.status }}</p>
+
+    <ng-container style="width: 100%" *ngFor="let controls of this.formFieldColl">
+
+        <div
+            [ngClass]="{ 'header-color': controls.type == 'group' }"
+            *ngIf="controls.type == 'group'"
+        >
+            {{ controls.label }}
+        </div>
+
+        <span *ngIf="controls.type != 'group'"> {{ controls.label }} </span>
+
+        <ng-container *ngIf="controls.type !== 'group'">
+            <ng-container class="spaceX" *ngIf="controls.type == 'boolean'">
+                <input
+                    [formControlName]="controls.fieldX"
+                    name="controls.fieldX"
+                    type="checkbox"
+                    required
+                    checked
+                    [name]="controls.fieldX"
+                    value="Yes"
+                />
+            </ng-container>
+
+            <ng-container class="" *ngIf="controls.type == 'date'">
+                <input
+                    *ngIf="!flag"
+                    class="spaceY"
+                    name="controls.fieldX"
+                    [formControlName]="controls.fieldX"
+                    type="date"
+                    [name]="controls.fieldX"
+                />
+            </ng-container>
+
+            <ng-container *ngIf="controls.type == 'string' && controls.linkId == 2.1">
+                <select name="controls.fieldX" class="spaceY" [formControlName]="controls.fieldX">
+                    <option value="">Select Country</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </ng-container>
+
+            <ng-container class="" *ngIf="controls.linkId == 2.3">
+                <select
+                    class="answerX"
+                    class="spaceY"
+                    name="controls.fieldX"
+                    [formControlName]="controls.fieldX"
+                >
+                    <option value="">Select Country</option>
+                    <option value="india">India</option>
+                    <option value="US">US</option>
+                    <option value="Australia">Australia</option>
+                </select>
+            </ng-container>
+
+            <ng-container class="spaceX spaceY" *ngIf="controls.linkId == 2.4">
+                <select class="spaceY" name="controls.fieldX" [formControlName]="controls.fieldX">
+                    <option value="">Select Marital Status</option>
+                    <option value="single">Single</option>
+                    <option value="Married">Married</option>
+                </select>
+            </ng-container>
+            <br />
+        </ng-container>
+        <br />
+    </ng-container>
+
+    <button class="btn btn-primary" (click)="submitParent()">Submit</button>
+</form>
+
+<hr />
+
+<div *ngIf="flag">
+    <app-answer *ngIf="flag" [formData]="questionnaire"></app-answer>
+</div>
